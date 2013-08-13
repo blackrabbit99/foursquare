@@ -1,7 +1,3 @@
-// Backbone API: Foursquare
-// Created by: Makis Tracend (@tracend)
-// Released under the MIT license
-
 /*
 Usage: 
 
@@ -18,11 +14,11 @@ Usage:
   
 	// Fallbacks
 	if( _.isUndefined(Backbone.API) ) Backbone.API = {};
-	//APP = window.APP || (APP = { Models: {}, Collections: {}, Views: {} });
+	var APP = {};
 	// support the APP namespace (if available)
-	var Model = APP.Model || Backbone.Model;
-	var View = APP.View || Backbone.View;
-	var Collection = APP.Collection || Backbone.Collection;
+	var Model = Backbone.Model;
+	var View = Backbone.View;
+	var Collection = Backbone.Collection;
 	
 	
 	// main request method
@@ -32,7 +28,7 @@ Usage:
 	
 	// namespace
 	Backbone.API.Foursquare.Models = {};
-	Backbone.API.Foursquare.Collection = {};
+	Backbone.API.Foursquare.Collections = {};
 	Backbone.API.Foursquare.Views = {};
 	
 
@@ -119,10 +115,10 @@ Usage:
 	
 	Backbone.API.Foursquare.Collections.Venues = Collection.extend({
 		url: function(){ 
-			return "venues/search?"
-				+ "ll="+ app.state.location.coords.latitude +","+ app.state.location.coords.longitude
-				+"&radius=50"; // hard-code radius to 50m
-				//+"&oauth_token="+ app.session.get("access_token");
+			return "https://api.foursquare.com/v2/venues/search?"
+				+ "ll=50.039268,36.219718"
+				+"&radius=500"
+				+"&oauth_token=AYCC4205M5IWFUEQTGV2RVC4FSJTIYFTK1ASS3M1CJYQHYJP";
 		}, 
 		initialize: function(){
 			// call cache on every state change
